@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetApp.Views.ExpensePage" BackgroundColor="LightCyan">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Label Text="Your Expense" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"
+               FontSize="Title"/>
+
+        <Entry  x:Name="Description" Placeholder="Describe your expense" CursorPosition="10" Grid.Row="1" 
+               Margin="30,0,0,0"
+               HorizontalOptions="StartAndExpand"
+               />
+
+        <Picker 
+            x:Name="picker"
+            Title="Select category"
+            Grid.Row="2"
+            Margin="30,0,0,0"
+            HorizontalOptions="StartAndExpand"
+            />
+
+        <Entry x:Name="ExpenseAmount" Placeholder="$ 00.00" CursorPosition="10" Margin="30,0,0,0" Grid.Row="3" 
+               HorizontalOptions="StartAndExpand" />
+
+        <DatePicker x:Name="ExpenseDate" HorizontalOptions="StartAndExpand"  Date="{Binding SelectedDate}" MinimumDate="1 Jan 2000" MaximumDate="31 Dec 2050"  Grid.Row="4"
+                     Margin="30,0,0,0">
+            <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+        </DatePicker>
+        
+        <RelativeLayout Grid.Row="5" Margin="0,10,0,0">
+
+            <Button Text="Save" Clicked="SaveButtonClicked" CornerRadius="6" BorderColor="Black" BorderWidth=".5"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=30}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"/>
+
+            <Button Text="Cancel" Clicked="CancelButtonClicked" CornerRadius="6" BorderColor="Black" BorderWidth=".5"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=130}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"/>
+
+            <Button x:Name="DeleteButton" Text="Delete" Clicked="DeleteButtonClicked"  Grid.Row="6" Margin="30,0,30,0" IsEnabled="False"
+                    CornerRadius="6" BorderColor="Black" BorderWidth=".5" HorizontalOptions="StartAndExpand"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=200}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"/>
+        </RelativeLayout>
+
+
+
+
+    </Grid>
+</ContentPage>
